@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://de1fa22eht2q7"]
+
+[ext_resource type="Script" uid="uid://dx1erys15wjw1" path="res://scenes/minigames/blow_up_the_dam/pipe/pipe.gd" id="1_q12n5"]
+[ext_resource type="SpriteFrames" uid="uid://bl6d2tchbql5" path="res://scenes/minigames/blow_up_the_dam/pipe/assets/pipe.tres" id="1_yep3c"]
+[ext_resource type="Script" uid="uid://djo30l12yi0kn" path="res://components/boxes/wallbox.gd" id="3_fs3cg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yymv"]
+size = Vector2(10.84375, 10.75)
+
+[node name="Pipe" type="AnimatedSprite2D" node_paths=PackedStringArray("water_spawn_point")]
+scale = Vector2(0.063, 0.063)
+sprite_frames = ExtResource("1_yep3c")
+autoplay = "default"
+script = ExtResource("1_q12n5")
+water_spawn_point = NodePath("WaterSpawnPoint")
+
+[node name="WallBox" type="StaticBody2D" parent="."]
+script = ExtResource("3_fs3cg")
+metadata/_custom_type_script = "uid://djo30l12yi0kn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBox"]
+position = Vector2(-0.5, 0)
+scale = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_0yymv")
+
+[node name="PLACEHOLDER" type="Label" parent="."]
+offset_left = -88.0
+offset_top = -143.0
+offset_right = 278.46756
+offset_bottom = -55.0
+rotation = 0.7853982
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "PLACEHOLDER"
+
+[node name="WaterSpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -206.3492)

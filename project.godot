@@ -14,3 +14,7 @@ config/name="Alchemy Jam 7"
 run/main_scene="uid://ciepisrx7iq8r"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+2d_physics/layer_20="Water"

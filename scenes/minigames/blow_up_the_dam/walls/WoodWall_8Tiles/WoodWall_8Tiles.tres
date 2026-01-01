@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://17debbpy77d1"]
+
+[ext_resource type="Texture2D" uid="uid://qnufyy65bpon" path="res://scenes/minigames/blow_up_the_dam/walls/WoodWall_8Tiles/WoodWall_8Tiles.png" id="1_d8eao"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d8eao")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]

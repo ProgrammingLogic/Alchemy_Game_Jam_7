@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6xi61sqfi4dw"]
+
+[ext_resource type="Script" uid="uid://nkctym8tmyw5" path="res://scenes/minigames/blow_up_the_dam/water_particle/water_particle.gd" id="1_152g3"]
+[ext_resource type="Texture2D" uid="uid://6boyjty0inrs" path="res://scenes/minigames/blow_up_the_dam/water_particle/water_particle.svg" id="2_0wmx8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_152g3"]
+friction = 0.05
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wmx8"]
+size = Vector2(15, 15)
+
+[node name="WaterParticle" type="RigidBody2D"]
+collision_layer = 524288
+physics_material_override = SubResource("PhysicsMaterial_152g3")
+center_of_mass_mode = 1
+lock_rotation = true
+linear_damp = 0.5
+script = ExtResource("1_152g3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_0wmx8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_0wmx8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.75, -0.75)
+scale = Vector2(0.1, 0.1)
+rect = Rect2(0, 0, 15, 15)
