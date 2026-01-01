@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://5mdrwdrrwj3t"]
+
+[ext_resource type="Texture2D" uid="uid://cin2ledtmfl0q" path="res://icon.svg" id="1_i71v3"]
+
+[node name="Main2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i71v3")
+centered = false
+flip_v = true
