@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciepisrx7iq8r"]
+
+[ext_resource type="Script" uid="uid://xs76gowafhjd" path="res://scenes/game/game.gd" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://df7mfovn2m142" path="res://scenes/minigames/blow_up_the_dam/blow_up_the_dam.tscn" id="2_7h61r"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_sul5r")
+
+[node name="BlowUpTheDam" parent="." instance=ExtResource("2_7h61r")]
