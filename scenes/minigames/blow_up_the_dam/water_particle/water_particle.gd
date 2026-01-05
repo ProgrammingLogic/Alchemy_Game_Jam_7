@@ -3,8 +3,8 @@ extends RigidBody2D
 ## A particle that simulates the flow of water.
 ## 
 ## The WaterParticle will move downward at flow_rate speed. If the 
-## 	WaterParticle is stopped by a wall, it will flow to the right
-## 	until there's no longer a wall under it.
+## 	WaterParticle hsa a wall under it, pick a direrction (left or
+##  right) and flow that direction until there isn't a wall under it.
 
 @export var flow_rate: float = 100
 
