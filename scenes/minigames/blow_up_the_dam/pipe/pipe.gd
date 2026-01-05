@@ -12,7 +12,7 @@ extends AnimatedSprite2D
 
 
 func _ready() -> void:	
-	water_spawn_timer.wait_time = 0.1
+	water_spawn_timer.wait_time = 0.001
 	water_spawn_timer.autostart = true
 	
 	add_child(water_spawn_timer)
@@ -34,5 +34,7 @@ func create_water() -> void:
 	var parent_scene: Node = get_tree().get_root()
 	
 	parent_scene.add_child(water_particle)
-	
 	water_particle.position = water_spawn_point.global_position
+	
+	water_particle = WaterParticle.new()
+	parent_scene = get_tree().get_root()
