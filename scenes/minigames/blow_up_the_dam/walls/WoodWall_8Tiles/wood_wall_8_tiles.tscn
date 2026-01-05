@@ -17,3 +17,17 @@ metadata/_custom_type_script = "uid://djo30l12yi0kn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallBox"]
 shape = SubResource("RectangleShape2D_g0ipd")
+
+[node name="Corners" type="Node2D" parent="WallBox"]
+
+[node name="CornerTopLeft" type="Node2D" parent="WallBox/Corners"]
+position = Vector2(-128, -16)
+
+[node name="CornerTopRight" type="Node2D" parent="WallBox/Corners"]
+position = Vector2(128, -16)
+
+[node name="CornerBottomLeft" type="Node2D" parent="WallBox/Corners"]
+position = Vector2(-128, 16)
+
+[node name="CornerBottomRight" type="Node2D" parent="WallBox/Corners"]
+position = Vector2(128, 16)
