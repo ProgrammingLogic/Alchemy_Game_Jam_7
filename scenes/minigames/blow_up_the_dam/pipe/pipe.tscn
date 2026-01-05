@@ -7,12 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yymv"]
 size = Vector2(10.84375, 10.75)
 
-[node name="Pipe" type="AnimatedSprite2D" node_paths=PackedStringArray("water_spawn_point")]
+[node name="Pipe" type="AnimatedSprite2D"]
 scale = Vector2(0.063, 0.063)
 sprite_frames = ExtResource("1_yep3c")
 autoplay = "default"
 script = ExtResource("1_q12n5")
-water_spawn_point = NodePath("WaterSpawnPoint")
 
 [node name="WallBox" type="StaticBody2D" parent="."]
 script = ExtResource("3_fs3cg")
