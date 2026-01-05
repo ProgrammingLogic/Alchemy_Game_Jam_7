@@ -5,13 +5,13 @@
 
 [node name="BlowUpTheDam" type="Node2D"]
 
-[node name="Pipe" parent="." instance=ExtResource("1_yxly6")]
-position = Vector2(16.999992, -147)
-rotation = 3.1415927
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(145, -81)
 zoom = Vector2(4, 4)
 
 [node name="WoodWall_8Tiles" parent="." instance=ExtResource("2_07lix")]
 position = Vector2(130, -98)
+
+[node name="Pipe" parent="." instance=ExtResource("1_yxly6")]
+position = Vector2(219, -144)
+rotation = -3.1415925
