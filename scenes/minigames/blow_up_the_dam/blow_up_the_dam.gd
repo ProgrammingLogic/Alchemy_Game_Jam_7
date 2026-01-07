@@ -1,3 +1,2 @@
 class_name BlowUpTheDamGame
-extends Game
-
+extends Minigame
