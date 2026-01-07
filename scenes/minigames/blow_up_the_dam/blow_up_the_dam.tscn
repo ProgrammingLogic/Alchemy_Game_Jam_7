@@ -1,17 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://df7mfovn2m142"]
+[gd_scene load_steps=2 format=3 uid="uid://df7mfovn2m142"]
 
-[ext_resource type="PackedScene" uid="uid://de1fa22eht2q7" path="res://scenes/minigames/blow_up_the_dam/pipe/pipe.tscn" id="1_yxly6"]
-[ext_resource type="PackedScene" uid="uid://eicgdm4fk3y1" path="res://scenes/minigames/blow_up_the_dam/walls/WoodWall_8Tiles/wood_wall_8_tiles.tscn" id="2_07lix"]
+[ext_resource type="Script" uid="uid://bcsfas8xq82fj" path="res://scenes/minigames/blow_up_the_dam/blow_up_the_dam.gd" id="1_5hw77"]
 
-[node name="BlowUpTheDam" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(145, -81)
-zoom = Vector2(4, 4)
-
-[node name="WoodWall_8Tiles" parent="." instance=ExtResource("2_07lix")]
-position = Vector2(130, -98)
-
-[node name="Pipe" parent="." instance=ExtResource("1_yxly6")]
-position = Vector2(219, -144)
-rotation = -3.1415925
+[node name="BlowUpTheDamGame" type="Node"]
+script = ExtResource("1_5hw77")
