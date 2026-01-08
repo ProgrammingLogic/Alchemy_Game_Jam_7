@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciepisrx7iq8r"]
+[gd_scene load_steps=5 format=3 uid="uid://ciepisrx7iq8r"]
 
 [ext_resource type="Script" uid="uid://xs76gowafhjd" path="res://game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://df7mfovn2m142" path="res://scenes/minigames/blow_up_the_dam/blow_up_the_dam.tscn" id="2_7h61r"]
-[ext_resource type="Script" uid="uid://exvypamn8sgw" path="res://game/components/polygon_wall.gd" id="3_0sr1o"]
+[ext_resource type="Script" uid="uid://exvypamn8sgw" path="res://game/components/shapes/polygons/polygon_wall.gd" id="3_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://de1fa22eht2q7" path="res://scenes/minigames/blow_up_the_dam/pipe/pipe.tscn" id="4_4fuuu"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_sul5r")
@@ -10,7 +11,13 @@ metadata/_custom_type_script = "uid://xs76gowafhjd"
 
 [node name="BlowUpTheDam" parent="." instance=ExtResource("2_7h61r")]
 
-[node name="PolygonWall" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(489, 98, 644, 306, 873, 482, 356, 506, 387.9182, 408.08563)
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(400, 116, 888, 75, 710, 339, 331, 172)
+
+[node name="PolygonWall" type="StaticBody2D" parent="Polygon2D"]
 script = ExtResource("3_0sr1o")
 metadata/_custom_type_script = "uid://exvypamn8sgw"
+
+[node name="Pipe" parent="." instance=ExtResource("4_4fuuu")]
+position = Vector2(601, 23)
+rotation = 3.1415927
