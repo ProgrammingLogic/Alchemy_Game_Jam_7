@@ -1,113 +1,50 @@
 class_name Bomb
-extends Polygon2D
+extends AnimatedSprite2D
 
 
-@onready var radius: float = 14.0
-@onready var sides: int = 4
-@onready var bomb_asset = preload("res://assets/bomb_explosion.tres")
-@onready var bomb_sprite: AnimatedSprite2D
-@onready var static_body: StaticBody2D
-@onready var collision_polygon: CollisionPolygon2D
-@onready var area: Area2D
+@onready var bomb_animation = preload("res://assets/animations/bomb.tres")
 
-signal explosion_completed
+var game_tile_map: BlowUpTheDamTileMap
+var game: Game
+var size = Vector2(32, 32)
 
 
-func _init(pos: Vector2):
+func _init(n_game: Game, tile_map: BlowUpTheDamTileMap, pos: Vector2) -> void:
+	game = n_game
+	game_tile_map = tile_map
 	position = pos
-	color = Color(0, 0, 0, 0)
 
 
-func _ready():
-	_create()
-	start_explosion()        
+func _ready() -> void:
+	_create_sprite()
 
 
-func _create():
-	set_polygon(_calculate_points())
-	_create_collision_polygon()
-	_create_static_body()
-	_create_bomb_sprite()
-	_create_area()
+func _create_sprite() -> void:
+	set_sprite_frames(bomb_animation)
+	speed_scale = 2
+	animation_finished.connect(_on_animation_finished)
 
-
-func _calculate_points() -> Array[Vector2]:
-	var points: Array[Vector2] = []
-
-	for i in sides:
-		var angle = i * TAU / sides
-
-		points.append(
-			Vector2(cos(angle), sin(angle)) *
-			radius
-		)
-
-	return points
-
-
-func _create_bomb_sprite() -> void:
-	bomb_sprite = AnimatedSprite2D.new()
-	bomb_sprite.set_sprite_frames(bomb_asset)
-	bomb_sprite.speed_scale = 2
-	bomb_sprite.animation_finished.connect(_on_animation_finished)
-	add_child(bomb_sprite)
-	
-	
-func _create_collision_polygon() -> void:
-	collision_polygon = CollisionPolygon2D.new()
-	collision_polygon.set_polygon(get_polygon())
-	add_child(collision_polygon)
-
-
-func _create_static_body() -> void:
-	static_body = StaticBody2D.new()
-
-	static_body.set_collision_layer_value(1, false) # Wall
-	static_body.set_collision_layer_value(3, true) # Bomb
-	static_body.set_collision_mask_value(2, true) # Destructable
-
-	static_body.add_child(collision_polygon)
-	add_child(static_body)
-	
-
-func _create_area() -> void:
-	area = Area2D.new()
-
-	area.set_collision_layer_value(1, false) # Wall
-	area.set_collision_layer_value(3, true) # Bomb
-	area.set_collision_mask_value(2, true) # Destructable
-
-	area.add_child(collision_polygon.duplicate())
-	add_child(area)
+#
+#func _create_tilemap_rect() -> Rect2i:
+	#var rect: Rect2i
+	#
+	#var gtm_pos: Vector2 = game_tile_map.to_local(position)
+	#
+	#rect = Rect2i(
+		#gtm_pos,
+		#size,
+	#)
+	#
+	#return rect
 
 
 func _on_animation_finished() -> void:
-	for p in get_colliding_destructable_polygons():
-		print(p)
-		p.destroy(self)
+	var explosion_global_rect := Rect2(
+		global_position - size / 2,
+		size
+	)
 	
-	
-func get_colliding_destructable_polygons() -> Array[Polygon2D]:
-	var result: Array[Polygon2D] = []
-	
-	for a in area.get_overlapping_areas():
-		if not a.get_collision_layer_value(2): # Destructable
-			continue
+	for cell in game_tile_map.get_cells_in_rect(explosion_global_rect):
+		game_tile_map.erase_cell(cell)
 
-		var parent = a.get_parent()
-			
-		if not parent is Polygon2D:
-			continue
-
-		result.append(parent)
-
-	return result
-
-
-func delete() -> void:
 	queue_free()
-
-
-func start_explosion() -> void:
-	if bomb_sprite:
-		bomb_sprite.play()

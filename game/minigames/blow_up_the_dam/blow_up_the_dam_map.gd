@@ -1,9 +1,15 @@
 extends TileMapLayer
 class_name BlowUpTheDamTileMap
 
-const GRID_WIDTH := 32
-const GRID_HEIGHT := 32
-const BASE_TILE_SIZE := Vector2(32, 32)
+var game: Game
+
+const GRID_WIDTH := 1000
+const GRID_HEIGHT := 1000
+const BASE_TILE_SIZE := Vector2i(32, 32)
+
+
+func _init(n_game: Game):
+	game = n_game
 
 
 func _ready() -> void:
@@ -35,3 +41,46 @@ func scale_to_screen() -> void:
 	scale = Vector2(scale_factor, scale_factor)
 	
 	position = (screen_size - base_map_size * scale_factor) / 2
+
+
+func get_global_position_of_cell(cell: Vector2i) -> Vector2:
+	return to_global(cell * BASE_TILE_SIZE)
+
+
+func get_global_rect_of_cell(cell: Vector2i) -> Rect2:
+	var center: Vector2 = get_global_position_of_cell(cell)
+	var half_size = Vector2(tile_set.tile_size) / 2.0
+
+	return Rect2(
+		center - half_size,
+		tile_set.tile_size,
+	)
+
+
+func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Vector2i]:
+	var result: Array[Vector2i] = []
+
+	var top_left_cell = local_to_map(to_local(search_global_rect.position))
+	var bottom_right_cell = local_to_map(to_local(search_global_rect.end))
+
+	for x in range(top_left_cell.x, bottom_right_cell.x + 1):
+		for y in range(top_left_cell.y, bottom_right_cell.y + 1):
+			var cell = Vector2i(x, y)
+			var cell_global_rect = get_global_rect_of_cell(cell)
+			
+			if search_global_rect.intersects(cell_global_rect):
+				result.append(cell)
+
+	return result
+
+
+func get_cells_in_circle(search_global_circle: CircleShape2D) -> Array[Vector2i]:
+	var result: Array[Vector2i] = []
+
+	return result
+
+
+func get_cells_in_polygon(search_global_polygon: Polygon2D) -> Array[Vector2i]:
+	var result: Array[Vector2i] = []
+	
+	return result
