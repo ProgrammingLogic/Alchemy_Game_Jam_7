@@ -9,6 +9,17 @@ func _ready() -> void:
 	add_child(current_game)
 
 func debug_draw_polygon(points: PackedVector2Array, duration := 10.0, color := Color.MAGENTA) -> void:
+	# Example:
+	#game.debug_draw_polygon(
+		#PackedVector2Array([
+			#Vector2(search_rect.position.x, search_rect.position.y),
+			#Vector2(search_rect.position.x + search_rect.size.x, search_rect.position.y),
+			#Vector2(search_rect.position.x + search_rect.size.x, search_rect.position.y + search_rect.size.y),
+			#Vector2(search_rect.position.x, search_rect.position.y + search_rect.size.y)
+		#]),
+		#10.0,
+		#Color.BLUE
+	#)
 	var debug_polygon := Polygon2D.new()
 	debug_polygon.color = color
 	debug_polygon.set_polygon(points)
