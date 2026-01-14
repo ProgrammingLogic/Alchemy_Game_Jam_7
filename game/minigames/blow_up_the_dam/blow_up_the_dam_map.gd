@@ -7,7 +7,7 @@ const BASE_TILE_SIZE := Vector2(32, 32)
 
 
 func _ready() -> void:
-	tile_set = load("res://assets/BlowUpTheDam_TileSet.tres")
+	tile_set = load("res://assets/tilesets/BlowUpTheDam_TileSet.tres")
 	tile_set.tile_size = Vector2i(BASE_TILE_SIZE)
 	_generate_map()
 	scale_to_screen()
