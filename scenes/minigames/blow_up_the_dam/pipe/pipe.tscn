@@ -4,20 +4,9 @@
 [ext_resource type="SpriteFrames" uid="uid://bl6d2tchbql5" path="res://scenes/minigames/blow_up_the_dam/pipe/assets/pipe.tres" id="1_yep3c"]
 
 [node name="Pipe" type="AnimatedSprite2D"]
-scale = Vector2(0.063, 0.063)
 sprite_frames = ExtResource("1_yep3c")
 autoplay = "default"
 script = ExtResource("1_q12n5")
 
-[node name="PLACEHOLDER" type="Label" parent="."]
-offset_left = -88.0
-offset_top = -143.0
-offset_right = 278.46756
-offset_bottom = -55.0
-rotation = 0.7853982
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "PLACEHOLDER"
-
 [node name="WaterSpawnPoint" type="Node2D" parent="."]
-position = Vector2(0, -206.3492)
+position = Vector2(0, -10)

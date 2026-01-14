@@ -5,5 +5,6 @@ extends Node
 
 @onready var game: Game
 
-func _init(game: Game) -> void:
-	self.game = game
+
+func _init(_game: Game) -> void:
+	game = _game
