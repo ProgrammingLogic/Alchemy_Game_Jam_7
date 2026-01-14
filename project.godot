@@ -13,6 +13,7 @@ config_version=5
 config/name="Alchemy Jam 7"
 run/main_scene="uid://ciepisrx7iq8r"
 config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://c7lq5jh1id80u"
 
 [input]
 
