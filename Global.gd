@@ -8,7 +8,7 @@ extends Node
 # Figure out the use of "Project > Project Settings > Input Map" too 
 
 func _input(event):
-	print(event.as_text())
+
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_1:
 			goto_scene("res://scenes/minigames/Main1.tscn")
