@@ -15,6 +15,10 @@ run/main_scene="uid://ciepisrx7iq8r"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [input]
 
 place_bomb={
@@ -33,7 +37,3 @@ place_bomb={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-
-[autoload]
-
-Global="*res://Global.gd"
