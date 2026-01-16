@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://xubtj2urd8b0"]
+
+[ext_resource type="Texture2D" uid="uid://nofjysoiwwas" path="res://src/scenes/tiles/walls/dirt/assets/Dirt.png" id="1_1xu04"]
+[ext_resource type="Texture2D" uid="uid://c34eafr0l4l16" path="res://src/scenes/tiles/pipe/Pipe.png" id="2_o8voa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8voa"]
+texture = ExtResource("1_1xu04")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aefpq"]
+texture = ExtResource("2_o8voa")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_aefpq")
+sources/0 = SubResource("TileSetAtlasSource_o8voa")
