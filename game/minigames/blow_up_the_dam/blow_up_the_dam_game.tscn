@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpxe1gtgoehe1"]
-
-[ext_resource type="Script" uid="uid://bcsfas8xq82fj" path="res://game/minigames/blow_up_the_dam/blow_up_the_dam.gd" id="1_1hm1j"]
-
-[node name="BlowUpTheDamGame" type="Node"]
-script = ExtResource("1_1hm1j")

@@ -17,7 +17,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
+MapManager="*res://src/services/map_manager/map_manager.gd"
+SceneManager="*res://src/services/scene_manager.gd"
+StateManager="*res://src/services/state_manager.gd"
 
 [input]
 
