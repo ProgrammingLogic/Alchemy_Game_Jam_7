@@ -4,6 +4,8 @@ extends AnimatedSprite2D
 
 @onready var bomb_animation = preload("res://src/entities/bomb/assets/bomb.tres")
 
+# TODO
+# - Scale bomb to screensize
 var size = Vector2(32, 32)
 
 
@@ -28,6 +30,10 @@ func _on_animation_finished() -> void:
 	)
 	
 	for cell in MapManager.get_cells_in_rect(explosion_global_rect):
-		MapManager.erase_cell(cell)
+		var c: Vector2i = cell["cell"]
+		var type: Tile = cell["type"]
+		
+		if type.destructable:
+			MapManager.erase_cell(c)
 
 	queue_free()

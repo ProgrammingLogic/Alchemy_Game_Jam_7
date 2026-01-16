@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1w30je2gx1gj"
-path="res://.godot/imported/wall2.png-4f9dfb64f6013311a6eccc51dbdf663d.ctex"
+uid="uid://cpuks2xlb6vas"
+path="res://.godot/imported/tile_stone.svg-15cab96c13b29a0f71ca554128c283c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/tiles/walls/assets/wall2.png"
-dest_files=["res://.godot/imported/wall2.png-4f9dfb64f6013311a6eccc51dbdf663d.ctex"]
+source_file="res://src/scenes/tiles/stone/assets/tile_stone.svg"
+dest_files=["res://.godot/imported/tile_stone.svg-15cab96c13b29a0f71ca554128c283c8.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
