@@ -15,15 +15,26 @@ func _ready() -> void:
 
 
 func _generate_map() -> void:
-	var dirt := 0
-	var pipe := 1
-	
+	var tiles: Array[Tile] = [
+		TileDirt.new(),
+		StoneTile.new(),
+	]
+
 	var y_offset := GRID_HEIGHT / 10
-	
-	# Fill the map with dirt
-	for y in range(5, GRID_HEIGHT):
+
+	# Fill the map with walls
+	randomize()
+	for y in range(y_offset, GRID_HEIGHT - y_offset):
 		for x in range(GRID_WIDTH):
-			set_cell(Vector2i(x, y), dirt, Vector2i(0, 0))
+			var r = randi_range(0, 1)
+
+			var id: int
+			if r == 0:
+				id = tiles[0].ids[0]
+			else:
+				id = tiles[1].ids[0]
+
+			set_cell(Vector2i(x, y), id, Vector2i(0, 0))
 
 
 func scale_to_screen() -> void:
@@ -51,8 +62,8 @@ func get_global_rect_of_cell(cell: Vector2i) -> Rect2:
 	)
 
 
-func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Vector2i]:
-	var result: Array[Vector2i] = []
+func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
 
 	var top_left_cell = local_to_map(to_local(search_global_rect.position))
 	var bottom_right_cell = local_to_map(to_local(search_global_rect.end))
@@ -63,7 +74,10 @@ func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Vector2i]:
 			var cell_global_rect = get_global_rect_of_cell(cell)
 			
 			if search_global_rect.intersects(cell_global_rect):
-				result.append(cell)
+				result.append({
+					"cell": cell,
+					"type": get_cell_type(cell),
+				})
 
 	return result
 
@@ -78,3 +92,18 @@ func get_cells_in_polygon(search_global_polygon: Polygon2D) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
 	
 	return result
+
+
+func get_cell_type(cell: Vector2i) -> Tile:
+	var id = get_cell_source_id(cell)
+
+	if id == 0:
+		return TileDirt.new()
+	elif id == 1:
+		return null
+	elif id >= 2 or id <= 5:
+		return WallTile.new(0)
+	elif id == 6:
+		return StoneTile.new()
+
+	return null
