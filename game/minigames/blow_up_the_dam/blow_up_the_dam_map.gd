@@ -3,8 +3,8 @@ class_name BlowUpTheDamTileMap
 
 var game: Game
 
-const GRID_WIDTH := 1000
-const GRID_HEIGHT := 1000
+const GRID_WIDTH := 100
+const GRID_HEIGHT := 100
 const BASE_TILE_SIZE := Vector2i(32, 32)
 
 
