@@ -7,6 +7,7 @@ const BASE_TILE_SIZE := Vector2i(32, 32)
 var TILES: Array[BaseTile] = [
 	TileDirt.new(),
 	TileStoneBrickWall.new(),
+	TileWater.new(),
 ]
 
 
@@ -42,7 +43,7 @@ func _generate_map() -> void:
 	for y in range(y_offset, GRID_HEIGHT - y_offset):
 		for x in range(GRID_WIDTH):
 			var pos = Vector2i(x, y)
-			var r = randi_range(0, TILES.size() - 1)
+			var r = randi_range(0, 1)
 			var tile = TILES[r]
 			
 			set_cell(
@@ -50,6 +51,25 @@ func _generate_map() -> void:
 				tile.id,
 				Vector2i.ZERO,
 			)
+
+	var half_x = GRID_WIDTH / 2
+	var half_y_offset = y_offset / 2
+	var water_pos = Vector2i(half_x, half_y_offset)
+	set_cell(
+		water_pos,
+		get_tile_by_name("water").id,
+		Vector2i.ZERO,
+	)
+
+
+func get_tile_by_name(name: String) -> BaseTile:
+	var result: BaseTile = null
+
+	for tile: BaseTile in TILES:
+		if tile.name == name:
+			return tile
+
+	return result
 
 
 func scale_to_screen() -> void:
