@@ -1,11 +1,9 @@
-extends Tile
+extends BaseTile
 class_name TileDirt
 
 
-const TILE_SET_IDS: Array[int] = [
-	0, # "res://src/scenes/tiles/dirt/assets/tile_dirt.png"
-]
-
-func _init():
-	ids = PackedInt32Array(TILE_SET_IDS)
-	destructable = true
+func _init() -> void:
+	name = "dirt"
+	texture_path = "res://src/scenes/tiles/dirt/assets/tile_dirt.png"
+	destructible = true
+	needs_update = false
