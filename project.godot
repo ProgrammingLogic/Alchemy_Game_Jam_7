@@ -21,6 +21,10 @@ MapManager="*res://src/services/map_manager.gd"
 SceneManager="*res://src/services/scene_manager.gd"
 StateManager="*res://src/services/state_manager.gd"
 
+[display]
+
+mouse_cursor/custom_image="uid://bbklco4lg63gr"
+
 [input]
 
 place_bomb={
