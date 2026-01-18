@@ -30,10 +30,8 @@ func _on_animation_finished() -> void:
 	)
 	
 	for cell in MapManager.get_cells_in_rect(explosion_global_rect):
-		var c: Vector2i = cell["cell"]
-		var type: Tile = cell["type"]
-		
-		if type.destructable:
-			MapManager.erase_cell(c)
+		var tile = MapManager.get_cell_tile(cell)
+		if tile.destructible:
+			MapManager.erase_cell(cell)
 
 	queue_free()

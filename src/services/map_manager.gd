@@ -1,40 +1,55 @@
 extends TileMapLayer
-#class_name MapManager
+
 
 const GRID_WIDTH := 100
 const GRID_HEIGHT := 100
 const BASE_TILE_SIZE := Vector2i(32, 32)
+var TILES: Array[BaseTile] = [
+	TileDirt.new(),
+	TileStoneBrickWall.new(),
+]
 
 
 func _ready() -> void:
-	tile_set = load("res://src/services/map_manager/assets/map_manager.tres")
-	tile_set.tile_size = Vector2i(BASE_TILE_SIZE)
+	if not tile_set:
+		tile_set = TileSet.new()
+		tile_set.tile_size = Vector2i(32, 32)
+
+	_init_physics_layers()
+	_init_tiles()
 	_generate_map()
 	scale_to_screen()
 	get_viewport().size_changed.connect(scale_to_screen)
 
 
-func _generate_map() -> void:
-	var tiles: Array[Tile] = [
-		TileDirt.new(),
-		StoneTile.new(),
-	]
+func _init_physics_layers() -> void:
+	tile_set.add_physics_layer()
+	var id = tile_set.get_physics_layers_count() - 1
 
+	tile_set.set_physics_layer_collision_layer(id, 1)
+	tile_set.set_physics_layer_collision_mask(id, 1)
+
+
+func _init_tiles() -> void:
+	for tile in TILES:
+		tile.register(tile_set)
+
+
+func _generate_map() -> void:
 	var y_offset := GRID_HEIGHT / 10
 
-	# Fill the map with walls
 	randomize()
 	for y in range(y_offset, GRID_HEIGHT - y_offset):
 		for x in range(GRID_WIDTH):
-			var r = randi_range(0, 1)
-
-			var id: int
-			if r == 0:
-				id = tiles[0].ids[0]
-			else:
-				id = tiles[1].ids[0]
-
-			set_cell(Vector2i(x, y), id, Vector2i(0, 0))
+			var pos = Vector2i(x, y)
+			var r = randi_range(0, TILES.size() - 1)
+			var tile = TILES[r]
+			
+			set_cell(
+				pos,
+				tile.id,
+				Vector2i.ZERO,
+			)
 
 
 func scale_to_screen() -> void:
@@ -62,8 +77,8 @@ func get_global_rect_of_cell(cell: Vector2i) -> Rect2:
 	)
 
 
-func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Dictionary]:
-	var result: Array[Dictionary] = []
+func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Vector2i]:
+	var result: Array[Vector2i] = []
 
 	var top_left_cell = local_to_map(to_local(search_global_rect.position))
 	var bottom_right_cell = local_to_map(to_local(search_global_rect.end))
@@ -74,36 +89,16 @@ func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Dictionary]:
 			var cell_global_rect = get_global_rect_of_cell(cell)
 			
 			if search_global_rect.intersects(cell_global_rect):
-				result.append({
-					"cell": cell,
-					"type": get_cell_type(cell),
-				})
+				result.append(cell)
 
 	return result
 
 
-func get_cells_in_circle(search_global_circle: CircleShape2D) -> Array[Vector2i]:
-	var result: Array[Vector2i] = []
-
-	return result
-
-
-func get_cells_in_polygon(search_global_polygon: Polygon2D) -> Array[Vector2i]:
-	var result: Array[Vector2i] = []
-	
-	return result
-
-
-func get_cell_type(cell: Vector2i) -> Tile:
+func get_cell_tile(cell: Vector2i) -> BaseTile:
 	var id = get_cell_source_id(cell)
+	
+	for tile in TILES:
+		if tile.id == id:
+			return tile
 
-	if id == 0:
-		return TileDirt.new()
-	elif id == 1:
-		return null
-	elif id >= 2 or id <= 5:
-		return WallTile.new(0)
-	elif id == 6:
-		return StoneTile.new()
-
-	return null
+	return TILES[0] # Fallback to the dirt tile
