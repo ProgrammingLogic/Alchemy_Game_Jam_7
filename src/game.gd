@@ -2,6 +2,15 @@ class_name Game
 extends Node2D
 
 
+func _ready() -> void:
+	# We just need water working
+	# We can make this better later
+	# But I don't care right now lol
+	var start_point = $WaterStartPoint
+	var water = Water.new(start_point.position)
+	add_child(water)
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("place_bomb"):
 		_place_bomb()	

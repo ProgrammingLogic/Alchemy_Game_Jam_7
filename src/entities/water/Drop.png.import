@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvav1y10wc1q4"
-path="res://.godot/imported/Drop.png-4dda98238ea32683c0d627d60e46f16a.ctex"
+path="res://.godot/imported/Drop.png-f804a306cb65d3bc28c93c9ddb46c19d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/tiles/water/assets/Drop.png"
-dest_files=["res://.godot/imported/Drop.png-4dda98238ea32683c0d627d60e46f16a.ctex"]
+source_file="res://src/entities/water/Drop.png"
+dest_files=["res://.godot/imported/Drop.png-f804a306cb65d3bc28c93c9ddb46c19d.ctex"]
 
 [params]
 
