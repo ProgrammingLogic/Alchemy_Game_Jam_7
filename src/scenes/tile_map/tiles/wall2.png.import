@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr0apgxhpkbry"
-path="res://.godot/imported/Drain.png-7d7bb7ff0338a0271f556588277796b2.ctex"
+uid="uid://d1w30je2gx1gj"
+path="res://.godot/imported/wall2.png-a93c63c7b4d50fde6ecda2d176feddb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/tiles/drain/assets/Drain.png"
-dest_files=["res://.godot/imported/Drain.png-7d7bb7ff0338a0271f556588277796b2.ctex"]
+source_file="res://src/scenes/tile_map/tiles/wall2.png"
+dest_files=["res://.godot/imported/wall2.png-a93c63c7b4d50fde6ecda2d176feddb4.ctex"]
 
 [params]
 

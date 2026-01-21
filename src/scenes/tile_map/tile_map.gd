@@ -1,69 +1,51 @@
 extends TileMapLayer
 
-
 const GRID_WIDTH := 100
 const GRID_HEIGHT := 100
 const BASE_TILE_SIZE := Vector2i(32, 32)
-var TILES: Array[BaseTile] = [
-	TileDirt.new(),
-	TileStoneBrickWall.new(),
-]
-
 
 func _ready() -> void:
-	if not tile_set:
-		tile_set = TileSet.new()
-		tile_set.tile_size = Vector2i(32, 32)
+	#_generate_map()
+	Game.TILE_MAP = self
+	#scale_to_screen()
+	#get_viewport().size_changed.connect(scale_to_screen)
 
-	_init_physics_layers()
-	_init_tiles()
-	_generate_map()
-	scale_to_screen()
-	get_viewport().size_changed.connect(scale_to_screen)
+#func _generate_map() -> void:
+	#var y_offset := GRID_HEIGHT / 10
+#
+	#randomize()
+	#for y in range(y_offset, GRID_HEIGHT - y_offset):
+		#for x in range(GRID_WIDTH):
+			#var pos = Vector2i(x, y)
+			#var r = randi_range(0, 1)
+			#var tile = TILES[r]
+			#
+			#set_cell(
+				#pos,
+				#tile.id,
+				#Vector2i.ZERO,
+			#)
+#
+	#var half_x = GRID_WIDTH / 2
+	#var half_y_offset = y_offset / 2
+	#var water_pos = Vector2i(half_x, half_y_offset)
 
-
-func _init_physics_layers() -> void:
-	tile_set.add_physics_layer()
-	var id = tile_set.get_physics_layers_count() - 1
-
-	tile_set.set_physics_layer_collision_layer(id, 1)
-	tile_set.set_physics_layer_collision_mask(id, 1)
-
-
-func _init_tiles() -> void:
-	for tile in TILES:
-		tile.register(tile_set)
-
-
-func _generate_map() -> void:
-	var y_offset := GRID_HEIGHT / 10
-
-	randomize()
-	for y in range(y_offset, GRID_HEIGHT - y_offset):
-		for x in range(GRID_WIDTH):
-			var pos = Vector2i(x, y)
-			var r = randi_range(0, 1)
-			var tile = TILES[r]
-			
-			set_cell(
-				pos,
-				tile.id,
-				Vector2i.ZERO,
-			)
-
-	var half_x = GRID_WIDTH / 2
-	var half_y_offset = y_offset / 2
-	var water_pos = Vector2i(half_x, half_y_offset)
-
-
-func get_tile_by_name(name: String) -> BaseTile:
-	var result: BaseTile = null
-
-	for tile: BaseTile in TILES:
-		if tile.name == name:
-			return tile
-
-	return result
+#
+#func get_tile_by_name(name: String) -> BaseTile:
+	#var result: BaseTile = null
+#
+	#for tile: BaseTile in TILES:
+		#if tile.name == name:
+			#return tile
+#
+	#return result
+func is_destructible(cell: Vector2i):
+	var tile_data = get_cell_tile_data(cell)
+	
+	if not tile_data:
+		return false
+	
+	return tile_data.get_custom_data("destructible")
 
 
 func scale_to_screen() -> void:
@@ -106,13 +88,13 @@ func get_cells_in_rect(search_global_rect: Rect2i) -> Array[Vector2i]:
 				result.append(cell)
 
 	return result
-
-
-func get_cell_tile(cell: Vector2i) -> BaseTile:
-	var id = get_cell_source_id(cell)
-	
-	for tile in TILES:
-		if tile.id == id:
-			return tile
-
-	return TILES[0] # Fallback to the dirt tile
+#
+#
+#func get_cell_tile(cell: Vector2i) -> BaseTile:
+	#var id = get_cell_source_id(cell)
+	#
+	#for tile in TILES:
+		#if tile.id == id:
+			#return tile
+#
+	#return TILES[0] # Fallback to the dirt tile

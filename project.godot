@@ -17,9 +17,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-MapManager="*res://src/services/map_manager.gd"
 SceneManager="*res://src/services/scene_manager.gd"
 StateManager="*res://src/services/state_manager.gd"
+Game="*res://src/game.gd"
 
 [display]
 

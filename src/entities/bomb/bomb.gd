@@ -29,9 +29,8 @@ func _on_animation_finished() -> void:
 		size
 	)
 	
-	for cell in MapManager.get_cells_in_rect(explosion_global_rect):
-		var tile = MapManager.get_cell_tile(cell)
-		if tile.destructible:
-			MapManager.erase_cell(cell)
+	for cell in Game.TILE_MAP.get_cells_in_rect(explosion_global_rect):
+		if Game.TILE_MAP.is_destructible(cell):
+			Game.TILE_MAP.erase_cell(cell)
 
 	queue_free()

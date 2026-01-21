@@ -1,13 +1,29 @@
-class_name Game
-extends Node2D
+extends Node
+
+
+var TILE_MAP: TileMapLayer = null
+
+enum TILES {
+	dirt = 0,
+	drain = 1,
+	pipe = 2,
+	stone_brick_wall = 3,
+	wall1 = 4,
+	wall2 = 5,
+	wall3 = 6,
+	wall4 = 7,
+}
+
+
 
 
 func _ready() -> void:
+		
 	# We just need water working
 	# We can make this better later
 	# But I don't care right now lol
-	var start_point = $WaterStartPoint
-	var water = Water.new(start_point.position)
+	var start_point = Vector2(564, 28)
+	var water = Water.new(start_point)
 	add_child(water)
 
 
