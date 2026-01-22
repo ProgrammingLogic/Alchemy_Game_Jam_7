@@ -39,6 +39,23 @@ func _place_bomb() -> void:
 	bomb.play()
 
 
+func debug_draw_line(start_point: Vector2, end_point: Vector2, duration := 10.00, color := Color.MAGENTA) -> void:
+	var debug_line := Line2D.new()
+	debug_line.color = color
+	debug_line.add_point(start_point)
+	debug_line.add_point(end_point)
+	debug_line.z_index = 500
+	
+	var timer := Timer.new()
+	timer.timeout.connect(func():
+		debug_line.queue_free()
+	)
+	
+	add_child(debug_line)
+	debug_line.add_child(timer)
+	timer.start(duration)
+
+
 func debug_draw_polygon(points: PackedVector2Array, duration := 10.0, color := Color.MAGENTA) -> void:
 	# Example:
 	#game.debug_draw_polygon(
