@@ -2,7 +2,7 @@ class_name Bomb
 extends AnimatedSprite2D
 
 
-@onready var bomb_animation = preload("res://src/entities/bomb/assets/bomb.tres")
+@onready var bomb_animation = preload("res://src/entities/bomb/bomb.tres")
 
 # TODO
 # - Scale bomb to screensize
@@ -11,6 +11,7 @@ var size = Vector2(32, 32)
 
 func _init(pos: Vector2) -> void:
 	position = pos
+	z_index = 2
 
 
 func _ready() -> void:

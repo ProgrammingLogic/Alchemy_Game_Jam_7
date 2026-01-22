@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dr0apgxhpkbry" path="res://src/scenes/tile_map/tiles/drain.png" id="2_x5dq6"]
 [ext_resource type="Texture2D" uid="uid://c34eafr0l4l16" path="res://src/scenes/tile_map/tiles/pipe.png" id="3_e82r3"]
 [ext_resource type="Texture2D" uid="uid://seiv5r6h7dta" path="res://src/scenes/tile_map/tiles/stone_brick_wall.png" id="4_785eh"]
-[ext_resource type="Texture2D" uid="uid://driv23jc01c2k" path="res://src/scenes/tile_map/tiles/wall1.png" id="5_wo2va"]
-[ext_resource type="Texture2D" uid="uid://d1w30je2gx1gj" path="res://src/scenes/tile_map/tiles/wall2.png" id="6_6afqw"]
-[ext_resource type="Texture2D" uid="uid://bqrqud8wq005w" path="res://src/scenes/tile_map/tiles/wall3.png" id="7_g6d5r"]
-[ext_resource type="Texture2D" uid="uid://mt8saqxkprpo" path="res://src/scenes/tile_map/tiles/wall4.png" id="8_g6f77"]
+[ext_resource type="Texture2D" uid="uid://driv23jc01c2k" path="res://src/scenes/tile_map/tiles/wall_one.png" id="5_wo2va"]
+[ext_resource type="Texture2D" uid="uid://d1w30je2gx1gj" path="res://src/scenes/tile_map/tiles/wall_two.png" id="6_6afqw"]
+[ext_resource type="Texture2D" uid="uid://bqrqud8wq005w" path="res://src/scenes/tile_map/tiles/wall_three.png" id="7_g6d5r"]
+[ext_resource type="Texture2D" uid="uid://mt8saqxkprpo" path="res://src/scenes/tile_map/tiles/wall_four.png" id="8_g6f77"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5b5nt"]
 texture = ExtResource("1_ar1ds")

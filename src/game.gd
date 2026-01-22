@@ -8,23 +8,16 @@ enum TILES {
 	drain = 1,
 	pipe = 2,
 	stone_brick_wall = 3,
-	wall1 = 4,
-	wall2 = 5,
-	wall3 = 6,
-	wall4 = 7,
+	wall_one = 4,
+	wall_two = 5,
+	wall_three = 6,
+	wall_four = 7,
 }
 
-
-
-
-func _ready() -> void:
-		
-	# We just need water working
-	# We can make this better later
-	# But I don't care right now lol
-	var start_point = Vector2(564, 28)
-	var water = Water.new(start_point)
-	add_child(water)
+#
+#func _ready() -> void:
+	#var water = Water.new()
+	#add_child(water)
 
 
 func _input(event: InputEvent) -> void:
@@ -57,17 +50,6 @@ func debug_draw_line(start_point: Vector2, end_point: Vector2, duration := 10.00
 
 
 func debug_draw_polygon(points: PackedVector2Array, duration := 10.0, color := Color.MAGENTA) -> void:
-	# Example:
-	#game.debug_draw_polygon(
-		#PackedVector2Array([
-			#Vector2(search_rect.position.x, search_rect.position.y),
-			#Vector2(search_rect.position.x + search_rect.size.x, search_rect.position.y),
-			#Vector2(search_rect.position.x + search_rect.size.x, search_rect.position.y + search_rect.size.y),
-			#Vector2(search_rect.position.x, search_rect.position.y + search_rect.size.y)
-		#]),
-		#10.0,
-		#Color.BLUE
-	#)
 	var debug_polygon := Polygon2D.new()
 	debug_polygon.color = color
 	debug_polygon.set_polygon(points)

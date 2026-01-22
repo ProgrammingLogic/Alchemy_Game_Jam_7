@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbklco4lg63gr"
-path="res://.godot/imported/cursor.png-2d233ff7758a2a2796e82992a9c8b570.ctex"
+uid="uid://d1w30je2gx1gj"
+path="res://.godot/imported/wall_two.png-04f05c8099ca49028b2f43bf6c21ff39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/ui/assets/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-2d233ff7758a2a2796e82992a9c8b570.ctex"]
+source_file="res://src/scenes/tile_map/tiles/wall_two.png"
+dest_files=["res://.godot/imported/wall_two.png-04f05c8099ca49028b2f43bf6c21ff39.ctex"]
 
 [params]
 
